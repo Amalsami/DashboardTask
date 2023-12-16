@@ -2,10 +2,10 @@ import React from 'react';
 import { LineChart } from '@mui/x-charts/LineChart';
 import { Paper } from '@mui/material';
 
-export default function LineCharts({ units, selectedLabel }) {
-  const xAxisLabels = units ? units.map((item) => item?.entitie) : [];
-  const seriesData = units
-    ? units.map((item) => ({
+export default function LineCharts({ data, selectedLabel,xAxisData }) {
+  const xAxisLabels = data ? data?.map((item) => item?.entitie) : [];
+  const seriesData = data
+    ? data?.map((item) => ({
       data: item.data.map((yearData) => Object.values(yearData)[0]),
     }))
     : [];
@@ -15,12 +15,12 @@ export default function LineCharts({ units, selectedLabel }) {
     : seriesData;
 
   return (
-    <Paper sx={{ display: "flex", justifyContent: "center" }}>
+    <Paper sx={{ display: "flex", justifyContent: "center" ,p:1 }}>
       <LineChart
-        xAxis={[{ data: [17, 18, 19, 20, 21, 22] }]}
+        xAxis={[{ data: xAxisData }]}
         series={filteredSeriesData.map((data, index) => ({
           data: data.data,
-          label: xAxisLabels[index],
+          // label: xAxisLabels[index],
         }))}
         width={500}
         height={300}

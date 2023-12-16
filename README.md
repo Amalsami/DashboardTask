@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# Housing Units and Population Density Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project showcases a responsive dashboard displaying housing units and population density data in Egypt. It incorporates routing for different data views, filters by entities, and reusable charts and tables to display and update data based on filters. Two contexts manage the data of housing units and population density separately, using JSON Server for data storage.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Enhanced Visualization**: Implement more sophisticated chart visualizations for data analysis.
+- **Data Update Mechanism**: Include a mechanism for real-time data updates.
+- **Responsive Routing**: Utilizes React Router for responsive navigation across different data views.
+- **Filtering by Entities**: Allows users to filter data by entities to view specific information.
+- **Reusable Charts and Tables**: Implements reusable components for charts and tables, updating data based on filters.
+- **Separate Contexts**: Manages housing units and population density data separately using distinct contexts.
+- **Material-UI (MUI)**: Utilizes MUI components for styling and UI elements.
+- **State Management**: Utilizes React Context API for state management.
+- **Data Fetching**: Uses useEffect and useState hooks for data fetching and management.
+- **Charting Library**: Integrates MUI X to create and display dynamic charts for data visualization.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tech Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- React
+- React Router DOM
+- Material-UI (MUI)
+- MUI X for Charts
+- React Context API
+- JSON Server
 
-### `npm test`
+## How to Use
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Installation**: Clone the repository and install dependencies using `npm install`.
+2. **Start JSON Server**: Run the JSON Server using `json-server --watch  data/data.json --port 8000`.
+3. **Start React App**: Run the React app using `npm start`.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

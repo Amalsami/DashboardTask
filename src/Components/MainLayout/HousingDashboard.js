@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -14,16 +14,9 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
-import { Grid } from "@mui/material";
-import { fetchData } from "../Services/Services";
-import Loading from "../loading/loading";
-import BarCharts from "../Charts/Charts";
-import FilterInput from "./Header";
-import DataTable from "../Tables/DataTable";
-import LineCharts from "../Charts/LineChart";
-// import SimpleLineChart from './line';
+import { Link } from "react-router-dom";
+
 
 const drawerWidth = 240;
 
@@ -45,27 +38,9 @@ const AppBar = styled(MuiAppBar, {
 }));
 
 export default function HousingDashboard(props) {
-  const [units, setUnits] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [selectedLabel, setSelectedLabel] = useState(null);
+
   const [mobileOpen, setMobileOpen] = useState(false);
   const { window } = props;
-
-  useEffect(() => {
-    fetchData()
-      .then((fetchedData) => {
-        setUnits(fetchedData);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        setLoading(false);
-      });
-  }, []);
-
-  const handleLabelChange = (label) => {
-    setSelectedLabel(label);
-  };
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -78,27 +53,17 @@ export default function HousingDashboard(props) {
     <div>
       <Toolbar />
       <Divider />
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      <Link to="/charts" style={{ textDecoration: 'none' }} >
+        <ListItemButton sx={{ textAlign: "center", textDecoration: "none" }}>
+          <ListItemText primary={"Charts"} />
+        </ListItemButton>
+      </Link>
       <Divider />
     </div>
   );
 
-  if (loading) {
-    return <Loading />;
-  }
   return (
-    <Box sx={{ display: "flex" }}>
+    <>
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -118,9 +83,11 @@ export default function HousingDashboard(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            housing dashboard
-          </Typography>
+          <Link to='/' style={{ textDecoration: 'none' }}>
+            <Typography variant="h6" noWrap component="div" color="white">
+              CAMPAS dashboard
+            </Typography>
+          </Link>
         </Toolbar>
       </AppBar>
       <Box
@@ -160,38 +127,6 @@ export default function HousingDashboard(props) {
           {drawer}
         </Drawer>
       </Box>
-      <Box
-        component="main"
-        sx={{ p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
-      >
-        <Grid
-          container
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "10px",
-            marginTop: "50px",
-          }}
-          spacing={2}
-        >
-          <Grid
-            item
-            xs={10}
-            md={10}
-            sx={{ display: "flex", justifyContent: "end" }}
-          >
-            <FilterInput handleLabelChange={handleLabelChange} units={units} />
-          </Grid>
-          <Grid item xs={10} md={5}>
-            <BarCharts units={units} selectedLabel={selectedLabel} />
-          </Grid>
-          <Grid item xs={10} md={5}>
-            <LineCharts units={units} selectedLabel={selectedLabel} />
-          </Grid>
-          <DataTable units={units} />
-          {/* <SimpleLineChart/> */}
-        </Grid>
-      </Box>
-    </Box>
+    </>
   );
 }

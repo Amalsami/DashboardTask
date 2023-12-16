@@ -1,10 +1,11 @@
 import React from 'react';
-import { BarChart } from '@mui/x-charts/BarChart';
+import { BarChart } from '@mui/x-charts';
 import { Paper } from '@mui/material';
 
-export default function BarCharts({ units, selectedLabel }) {
-  const xAxisLabels = units ? units.map((item) => item?.entitie) : [];
-  const seriesData = units ? units.map((item) => ({
+export default function BarCharts({ data, selectedLabel, xAxisData }) {
+
+  const xAxisLabels = data ? data.map((item) => item.entitie) : [];
+  const seriesData = data ? data.map((item) => ({
     data: item.data.map((yearData) => Object.values(yearData)[0]),
   })) : [];
 
@@ -13,13 +14,14 @@ export default function BarCharts({ units, selectedLabel }) {
     : seriesData;
 
   return (
-    <Paper sx={{display:"flex", justifyContent:"center"}}>
-    <BarChart
-      xAxis={[{ scaleType: 'band', data: ['16/17', '17/18', '18/19', '19/20', '20/21', '21/22'] }]}
-      series={filteredSeriesData}
-      width={500}
-      height={300}
-    />
+    <Paper sx={{ display: "flex", justifyContent: "center", p: 1 }}>
+      <BarChart
+        xAxis={[{ scaleType: 'band', data: xAxisData }]}
+        series={filteredSeriesData}
+        width={500}
+        height={300}
+        data-testid="bar-chart"
+      />
     </Paper>
   );
 }

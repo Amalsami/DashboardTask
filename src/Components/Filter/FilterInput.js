@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MenuItem, Select, FormControl, InputLabel, Paper } from '@mui/material';
 
-export default function FilterInput({ handleLabelChange, units }) {
-  const [selectedTag, setSelectedTag] = React.useState('');
+export default function FilterInput({ handleLabelChange, data }) {
+  const [selectedTag, setSelectedTag] = useState('');
 
   const handleChange = (event) => {
     setSelectedTag(event.target.value);
@@ -23,8 +23,8 @@ export default function FilterInput({ handleLabelChange, units }) {
           label="Filter"
         >
           <MenuItem value={allOption.entitie}>{allOption.entitie}</MenuItem>
-          {units &&
-            units.map((item, index) => (
+          {data &&
+            data?.map((item, index) => (
               <MenuItem key={index} value={item.entitie}>
                 {item.entitie}
               </MenuItem>
